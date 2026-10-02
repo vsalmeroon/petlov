@@ -26,7 +26,8 @@ describe('Formulário de Ponto de Doação', () => {
     cy.get('button[type="submit"]').click()
     cy.wait('@getCep')
 
-    cy.contains('Você fez a diferenca!').should('be.visible')
+    cy.contains('Você fez a diferença!')
+      .should('be.visible')
   })
 
   context('Campos Obrigatórios', () => {
