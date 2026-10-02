@@ -26,7 +26,7 @@ describe('Formulário de Ponto de Doação', () => {
     cy.get('button[type="submit"]').click()
     cy.wait('@getCep')
 
-    cy.contains('Você fez a diferença!').should('be.visible')
+    cy.contains('Você fez a diferenca!').should('be.visible')
   })
 
   context('Campos Obrigatórios', () => {
@@ -34,21 +34,24 @@ describe('Formulário de Ponto de Doação', () => {
       const invalidDonationPoint = { ...donationPoint, name: '' }
       cy.fillDonationForm(invalidDonationPoint)
       cy.get('button[type="submit"]').click()
-      cy.contains('.alert-error', 'Informe o seu nome completo').should('be.visible')
+      cy.contains('.alert-error', 'Informe o seu nome completo')
+        .should('be.visible')
     })
 
     it('Não deve cadastrar quando o email não é informado', () => {
       const invalidDonationPoint = { ...donationPoint, email: '' }
       cy.fillDonationForm(invalidDonationPoint)
       cy.get('button[type="submit"]').click()
-      cy.contains('.alert-error', 'Informe o seu melhor email').should('be.visible')
+      cy.contains('.alert-error', 'Informe o seu melhor email')
+        .should('be.visible')
     })
 
     it('Não deve cadastrar quando o CEP não é informado', () => {
       const invalidDonationPoint = { ...donationPoint, address: { ...donationPoint.address, zipCode: '' } }
       cy.fillDonationForm(invalidDonationPoint)
       cy.get('button[type="submit"]').click()
-      cy.contains('.alert-error', 'Informe o seu CEP').should('be.visible')
+      cy.contains('.alert-error', 'Informe o seu CEP')
+        .should('be.visible')
     })
 
     it('Não deve cadastrar quando o número é menor ou igual a zero', () => {
